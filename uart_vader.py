@@ -61,7 +61,7 @@ class TxCharacteristic(Characteristic):
 
 class RxCharacteristic(Characteristic):    
   def __init__(self, bus, index, service):        
-    Characteristic.__init__(self, bus, index, UART_RX_CHARACTERISTIC_UUID, 'write'], service)    
+    Characteristic.__init__(self, bus, index, UART_RX_CHARACTERISTIC_UUID, 'write', service)    
  
   def WriteValue(self, value, options):        
     characteristicValue = bytearray(value).decode()
@@ -71,9 +71,9 @@ class RxCharacteristic(Characteristic):
   def validateValueAndVentilate(self, value):
     parameters = value.split("|")
     paramsLength = len(parameters)
-    if paramsLength == 5
+    if paramsLength == 5:
       mm.ventilate(parameters)
-    else 
+    else: 
       print('Parse Error: {} parameters found, but looking for 5'.format(paramsLength))
 
 ##########################################################
