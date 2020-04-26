@@ -11,8 +11,8 @@ DBUS_OM_IFACE =                'org.freedesktop.DBus.ObjectManager'
 LE_ADVERTISING_MANAGER_IFACE = 'org.bluez.LEAdvertisingManager1'
 GATT_MANAGER_IFACE =           'org.bluez.GattManager1'
 GATT_CHRC_IFACE =              'org.bluez.GattCharacteristic1'
-UART_SERVICE_UUID =            '2e70df6a-7fab-44a4-9b20-c12f5d1e726c'
-UART_RX_CHARACTERISTIC_UUID =  '2e70df6b-7fab-44a4-9b20-c12f5d1e726c'
+UART_SERVICE_UUID =            '6e400001-b5a3-f393-e0a9-e50e24dcca9e'
+UART_RX_CHARACTERISTIC_UUID =  '6e400002-b5a3-f393-e0a9-e50e24dcca9e'
 UART_TX_CHARACTERISTIC_UUID =  '6e400003-b5a3-f393-e0a9-e50e24dcca9e'
 LOCAL_NAME =                   'rpi-gatt-server'
 mainloop = None
@@ -61,7 +61,7 @@ class TxCharacteristic(Characteristic):
 
 class RxCharacteristic(Characteristic):    
   def __init__(self, bus, index, service):        
-    Characteristic.__init__(self, bus, index, UART_RX_CHARACTERISTIC_UUID, 'write', service)    
+    Characteristic.__init__(self, bus, index, UART_RX_CHARACTERISTIC_UUID, ['write'], service)    
  
   def WriteValue(self, value, options):        
     characteristicValue = bytearray(value).decode()
